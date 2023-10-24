@@ -1,6 +1,6 @@
 import React  from "react"; // i get React object from react class
 import ReactDom from 'react-dom'; // ReactDom creates virtual dom in runtime
-import App from './components/App'
+import App from './components/App/App'
 
 
 // ReactDom.render( 
