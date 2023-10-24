@@ -8,7 +8,7 @@ const Card = (props)=>{      // here the props is object contains the array (dat
     <div 
       className={styles.cardWrapper}
       key={index}
-      style={{background: props.type==="men"? "blue" :"pink"}}>
+      style={{background: props.type==="men"? "green" :"pink"}}>
        <div>{ele.name}</div>
        <div>{ele.age}</div>
        <div className={styles.deleteButton}>x</div>
