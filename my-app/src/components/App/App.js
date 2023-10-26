@@ -1,12 +1,13 @@
-import React, {useState}  from 'react'
+import React, {useState,useRef}  from 'react'
 import './App.css' 
 import Card from '../Card/Card';
 
 // state is the holder of the state (data or he array) 
 // the second parameter(setstate) is used to update the data for example if i need to add value inside the array i use setstate instead of push
 const App = () => {
+const inputEl =useRef(null);
 
-const[cardToggle,setCardToggle]=useState(false);
+const[cardToggle,setCardToggle]=useState(true);
 
   const[state,setState]=useState(   // i make destruction for usestate()
     [{name:"amr",age:26},{name:"ahmed",age:25},{name:"ali",age:30}])
@@ -29,6 +30,14 @@ console.log("outside",state) //هيطبع احدث ستيت يعني هيطبع 
 const handlerToggle =()=>{
   setCardToggle(!cardToggle);}
 
+  const inputHandler= ()=>{
+    console.log(inputEl.current.value)
+  }
+
+  const focusHandler =()=>{
+    inputEl.current.focus();
+  }
+
   return (      // here there is the latest updated version of state 
                //اللي مكتوب داخل الرترن هو اللي هيتعرض
     <div className='mainContent'>
@@ -38,12 +47,16 @@ const handlerToggle =()=>{
       //<button style={{marginBottom:"20px"}} onClick={handlerToggle}>{cardToggle?"hide names" :"show names"} </button>
     } 
     <button style={{marginBottom:"20px"}} onClick={()=>setCardToggle(!cardToggle)}>{cardToggle?"hide names" :"show names"} </button>
+    <button onClick={focusHandler}>click me</button>
+    <div style={{marginBottom:"20px"}}>
+      <input type='text' placeholder='for test ref' ref={inputEl} onChange={inputHandler}></input>    
+    </div>
     <div className={cardToggle? "show" :"hide"}>
        <Card namesList={state} type="men" deleteHandler={deleteHandler} ></Card> 
     </div>
     </div>
   )
-}
-
+} 
 export default App
 
+// any value of the input will store in inputEl
