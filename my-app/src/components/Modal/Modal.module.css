@@ -1,0 +1,28 @@
+
+/* it is a div its width is the full width of the screen */
+
+.backDrop {   
+z-index: 1000;     
+position : fixed;
+top: 0px;
+ left: 0px;
+ right: 0px;
+ bottom: 0px;
+ background-color: black;
+ opacity: 0.8;
+}
+
+.overLay {
+z-index: 1500;
+position : absolute;
+padding:20px;
+width:30%;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+/* margin-top: -250px;
+margin-left: -15%; */
+background-color: white;
+border-radius: 20px;
+}
+
