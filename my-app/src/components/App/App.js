@@ -3,6 +3,8 @@ import './App.css'
 import CardList from '../CardList/CardList'
 import Filter from '../Filter/Filter'
 import Modal from '../Modal/Modal'
+import Button from '../Layout/Button'
+import AddUser  from '../AddUser/AddUser'
 
 // state is the holder of the state (data or he array) 
 // the second parameter(setstate) is used to update the data for example if i need to add value inside the array i use setstate instead of push
@@ -67,17 +69,29 @@ const namesHandler = ()=>{
 }
 
 
-  return (   
+  return (  
+    <>
     <div className='mainContent'>
-     <Modal showModal={showModal} closeModal={()=>setShowModalState(false)}></Modal>
     <h1>boys</h1>
-    <button style={{marginBottom:"20px"}} onClick={()=>setCardToggle(!cardToggle)}>{cardToggle?"hide names" :"show names"} </button>
-    <button className='btn' style={{marginBottom:"20px"}} onClick={()=>setShowModalState(true)}> create new record </button>
+
+    <Button style={{marginBottom:"20px"}} onClick={()=>setCardToggle(!cardToggle)}>
+    {cardToggle?"hide names" :"show names"} 
+    </Button>
+    
+    <Button style={{marginBottom:"20px"}} onClick={()=>setShowModalState(true)}>
+    create new record
+    </Button>
+
     <Filter filterNames={filterNames}></Filter>
     <div className={cardToggle? "show" :"hide"}>
        <CardList namesList={namesHandler()} deleteHandler={deleteHandler} ></CardList> 
     </div>
     </div>
+   <Modal showModal={showModal} closeModal={()=>setShowModalState(false)}>
+    <AddUser></AddUser>
+    </Modal>
+   </> 
+
   )
 } 
 export default App

@@ -1,7 +1,6 @@
 import React,{Fragment} from 'react'
 import ReactDom from 'react-dom'; 
 import styles from './Modal.module.css'
-import Controller  from '../Layout/Controller';
 
 
 const BackDrop =({close})=>{
@@ -10,27 +9,23 @@ const BackDrop =({close})=>{
     )
 }
 
-const OverLay =()=>{
+const OverLay =({children})=>{
+
     return (
         <div className={styles.overLay}>
-            <form>
-                <Controller>
-                <label htmlFor='name'>Name</label>
-                <input type='text' id='name' placeholder='Enter Name' />
-                </Controller>       
-            </form>
+        {children}
         </div>
     )
 }
 
-const Modal = ({showModal,closeModal}) => {
+const Modal = ({showModal,closeModal,children}) => {
   return (
     showModal && (
     <Fragment>
         {ReactDom.createPortal(
         <Fragment>
            <BackDrop close={closeModal}></BackDrop>
-           <OverLay></OverLay>
+           <OverLay>{children}</OverLay>
         </Fragment>,document.getElementById('modal')
         )}
     </Fragment>
